@@ -77,8 +77,6 @@ export function createAsuRequestBuilder(context) {
 
     const selectedVersion = $("#versions").value;
     const reposMode = config.asu_repositories_mode;
-    const repositoriesMode =
-      reposMode === "replace" || reposMode === "append" ? reposMode : "";
     const buildBody = {
       profile: currentDevice.id,
       target: currentDevice.target,
@@ -94,8 +92,10 @@ export function createAsuRequestBuilder(context) {
         selectedVersion
       ),
       repository_keys: config.asu_repository_keys || [],
-      repositories_mode: repositoriesMode,
     };
+    if (reposMode === "replace" || reposMode === "append") {
+      buildBody.repositories_mode = reposMode;
+    }
     const requestUrl =
       `${config.asu_url}/api/v1/build` + (requestHash ? `/${requestHash}` : "");
 
