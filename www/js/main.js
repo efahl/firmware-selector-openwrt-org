@@ -21,6 +21,7 @@ const progress = {
   "tr-started": 12,
   "tr-container-setup": 15,
   "tr-download-imagebuilder": 20,
+  "tr-validate-revision": 25,
   "tr-validate-manifest": 30,
   "tr-unpack-imagebuilder": 40,
   "tr-calculate-packages-hash": 60,

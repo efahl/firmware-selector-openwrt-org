@@ -128,11 +128,11 @@ export function createAsuRequestBuilder(context) {
           case 202:
             response.json().then((mobj) => {
               showStatus(
-                `tr-${mobj.detail || mobj.imagebuilder_status || "init"}`,
+                `tr-${mobj.imagebuilder_status || mobj.detail || "init"}`,
                 true,
                 "info"
               );
-              if (mobj.detail && mobj.queue_position) {
+              if (mobj.queue_position) {
                 $(
                   "#asu-buildstatus span"
                 ).innerText += ` (${mobj.queue_position})`;
